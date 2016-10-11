@@ -39,15 +39,7 @@ def capitalize(phrase)
 		 return answer	 
 	else
 		array = phrase.split(".")
-		array.each do |s|
-			if s[1] == " "
-				p s[1]
-				s[1].pop!
-			end
-		end
-		p array
-
-		array.map {|s| s.capitalize! }
+		array.map {|s| s.capitalize!}
 		# ind_num = 0
 		# if element.include?(".")
 		# 	ind_num = ind
@@ -64,7 +56,7 @@ def capitalize(phrase)
 end
 ######################################
 ######################################
-# capitalize("this is a test... and another test.")
+capitalize("this is a test... and another test.")
 capitalize("first, solve the problem.then, write the code.")
 capitalize("hello, dr. morris.")
 
