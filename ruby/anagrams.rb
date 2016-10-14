@@ -17,17 +17,15 @@ def anagram(a,b)
 	b = b.split('')
 
 	a_length = a.length-1
-	# b_length = b.length-1
 
 	match = []
-	non_match = []
+	non_match = 0
 
 	while a_length >= 0
 		b.map do |i|
 			if i == a[a_length]
 				match << i
-			elsif i != a[a_length]
-				non_match << i
+
 			else
 				next
 			end
@@ -36,9 +34,12 @@ def anagram(a,b)
 	end
 
 	p match
-	# p non_match
+	non_match = (a.length - match.length).abs + (b.length - match.length).abs
+
+	puts non_match
 	
 end
 
 
-anagram("cde", "abc")
+# anagram("cde", "ccracker")
+anagram("babadook", "dookie")
