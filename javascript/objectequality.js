@@ -16,9 +16,12 @@ function isEqual(a, b) {
 		return false
 	}else{
 		for (var i = 0; i < propsA.length; i++ ){
-		// 	// console.log("hit")
-		
-			if (propsA[i] !== propsB[i]) {
+			var property = propsA[i]
+			console.log("a[property]: " + a[property])
+			console.log("b[property]: " + b[property])
+			console.log(propsA[i])
+
+			if (a[property] !== b[property]) {
 				console.log("false")
 				return false
 			}else{
@@ -41,7 +44,7 @@ var objX = {
 
 var objY = {
 	zwanky: "banana",
-	zef: "bama"
+	zefe: "bama"
 }
 
 
