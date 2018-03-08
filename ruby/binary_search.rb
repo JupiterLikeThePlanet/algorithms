@@ -1,28 +1,31 @@
 # find matches in an array.  X is integer, A is an array
 
+# way 1 (recursive)
 def solution(x, a)
-  
-  start=0 
+
+  start=0
   last=(a.length)-1
-  middle = (0 + (a.length - 1))/2
-  # k = []
-  if a[middle] == x
-    k << middle
-  elsif a[middle] < x
-    solution(x, a)
-  elsif a[middle] > x
-    solution(x, a)
+  # num = 0
+  mid = (start+last)/2
+
+  if a[mid] == x
+    # p a[mid]
+    p mid
+    return mid
+  elsif a[mid] < x
+    # a = a.slice(0, mid)
+    solution(x, a[(mid+1)..last])
+  elsif a[mid] > x
+    # a = a.slice(mid, (a.length-1))
+    solution(x, a[start..mid])
   else
-    return nil
+    p 'Not found'
+    return -1
   end
-  
-  return k.length
-  
-  # length = a.length
-  # a.each_slice( (a.size/2.0).round ).to_a
-  
-  
+
+
 end
 
 
-solution(5, [5, 5, 1, 7, 2, 3, 5])
+solution(45, [23, 45, 67, 89, 123, 568])
+
