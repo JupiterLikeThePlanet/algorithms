@@ -26,19 +26,51 @@
 //
 
 
+// function estimateTime(numOfParts, partsArr) {
+//     var origArr = partsArr
+//     var time = 0
+//     while(origArr.length > 1) {
+//         var half = Math.ceil(origArr.length/2)
+//         var sum = origArr[half] + origArr[half-1]
+//         // var half = Math.floor(origArr.length / 2)
+//         // var sum = origArr[half] + origArr[half + 1]
+//         console.log("time before sum: " + time)
+//         time = time + sum
+//         origArr.splice(half, 1, sum)
+//         origArr.splice(half-1, 1)
+//         // origArr.splice(half + 1, 1)
+//         console.log(origArr)
+//         console.log('time: ' + time)
+//     }
+//     // console.log("our answer: " + origArr)
+//     console.log('end time: ' + time)
+//     return origArr
+// }
+
 function estimateTime(numOfParts, partsArr) {
     var origArr = partsArr
     var time = 0
-    while(origArr.length > 1) {
-        var half = Math.ceil(origArr.length/2)
-        var sum = origArr[half] + origArr[half-1]
+    while (origArr.length > 1) {
+        var half = Math.floor(origArr.length / 2)
+        // if (origArr.length > 2) {
+            var sum = origArr[half-1] + origArr[half]
+        // }else{
+        //     var sum = origArr[half - 1 ] + origArr[half]
+        // }
+
+        if (half%2 === 1) {
+            sum = origArr[half] + origArr[half + 1]
+        }else{
+            sum = origArr[half] + origArr[half - 1]
+        }
+
+        console.log("time before sum: " + time)
         time = time + sum
-        origArr.splice(half, 1, sum)
-        origArr.splice(half-1, 1)
+        origArr.splice(half-1, 2, sum)
         console.log(origArr)
         console.log('time: ' + time)
     }
-    // console.log("our answer: " + origArr)
+
     console.log('end time: ' + time)
     return origArr
 }
