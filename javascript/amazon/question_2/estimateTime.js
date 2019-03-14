@@ -25,7 +25,7 @@
 //
 //
 
-
+///////// Attempt 1 ///////////////////////////
 // function estimateTime(numOfParts, partsArr) {
 //     var origArr = partsArr
 //     var time = 0
@@ -47,37 +47,73 @@
 //     return origArr
 // }
 
+///////////////////// ATTEMPT 2 ////////////////////////////
+// function estimateTime(numOfParts, partsArr) {
+//     var origArr = partsArr
+//     var time = 0
+//     while (origArr.length > 1) {
+//         var half = Math.floor(origArr.length / 2)
+//         var sum = origArr[half-1] + origArr[half]
+
+//         console.log("time before sum: " + time)
+//         time = time + sum
+//         origArr.splice(half-1, 2, sum)
+//         console.log(origArr)
+//         console.log('time: ' + time)
+//     }
+
+//     console.log('end time: ' + time)
+       
+//     return time
+// }
+
+// Passes this case
+// estimateTime(4, [8, 4, 6, 12])
+// console.log('Expected Return Value: 58')
+
+
+///////////////////// ATTEMPT 3 ////////////////////////////
 function estimateTime(numOfParts, partsArr) {
     var origArr = partsArr
     var time = 0
+    var sumArr = []
     while (origArr.length > 1) {
-        var half = Math.floor(origArr.length / 2)
+        // var half = Math.floor(origArr.length / 2)
         // if (origArr.length > 2) {
-            var sum = origArr[half-1] + origArr[half]
+        //     var sum = origArr[half-1] + origArr[half]
         // }else{
         //     var sum = origArr[half - 1 ] + origArr[half]
         // }
+        var half = Math.floor(origArr.length / 2)
+        var sum = origArr[half-1] + origArr[half]
 
-        if (half%2 === 1) {
-            sum = origArr[half] + origArr[half + 1]
-        }else{
-            sum = origArr[half] + origArr[half - 1]
-        }
+        // if (half%2 === 1) {
+        //     sum = origArr[half] + origArr[half + 1]
+        // }else{
+        //     sum = origArr[half] + origArr[half - 1]
+        // }
 
-        console.log("time before sum: " + time)
-        time = time + sum
+        // console.log("time before sum: " + time)
+        // time = time + sum
+        sumArr.push(sum)
         origArr.splice(half-1, 2, sum)
-        console.log(origArr)
-        console.log('time: ' + time)
+        // console.log(origArr)
+        // console.log('time: ' + time)
     }
 
+    for(var i = 0; i < sumArr.length ; i++){
+        time = time + sumArr[i] 
+        console.log("time loop: " + time)
+    }
     console.log('end time: ' + time)
-    return origArr
+    return time
 }
 
 
-estimateTime(4, [20,4,8,2])
-console.log('Expected Return Value: 54')
+// estimateTime(4, [20,4,8,2])
+// console.log('Expected Return Value: 54')
+// estimateTime(4, [8, 4, 6, 12])
+// console.log('Expected Return Value: 58')
 
-estimateTime(6, [1,2,5,10,35,89])
-console.log('Expected Return Value: 224')
+// estimateTime(6, [1,2,5,10,35,89])
+// console.log('Expected Return Value: 224')
